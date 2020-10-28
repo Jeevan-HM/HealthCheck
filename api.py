@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 import config as cfg
 import xml.etree.ElementTree as e
+import lxml.etree as etree
+from xml.dom import minidom
 
 client = MongoClient(cfg.uri)
 db_name = cfg.dbname
@@ -15,9 +17,8 @@ person[0]["api_url"]
 version = "1.0"
 txn = person[0]["txn"]
 sample_data = [person[0]["sample _data"]]
-print(sample_data)
 
-root = e.Element("PullURIRequest ver=" + version + " txn" + txn)
+root = e.Element("PullURIRequest", attrib={"ver": version, "txn": txn})
 doc_details = e.SubElement(root, "DocDetails")
 for i in sample_data:
     e.SubElement(doc_details, "UID").text = i["UID"]
@@ -26,7 +27,7 @@ for i in sample_data:
     e.SubElement(doc_details, "gender").text = i["gender"]
     e.SubElement(doc_details, "phone_number").text = i["phone_number"]
 
-e.SubElement(root, person[0]["email"])
+e.SubElement(root, "email").text = person[0]["email"]
 xml = e.ElementTree(root)
 xml.write("TEST.xml")
 print(xml)
