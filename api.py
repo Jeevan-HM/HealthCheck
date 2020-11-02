@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import config as cfg
-import xml.etree.ElementTree as e
+import xml.etree.ElementTree as et
 import lxml.etree as etree
 from xml.dom import minidom
 
@@ -18,16 +18,16 @@ version = "1.0"
 txn = person[0]["txn"]
 sample_data = [person[0]["sample _data"]]
 
-root = e.Element("PullURIRequest", attrib={"ver": version, "txn": txn})
-doc_details = e.SubElement(root, "DocDetails")
+root = et.Element("PullURIRequest", attrib={"ver": version, "txn": txn})
+doc_details = et.SubElement(root, "DocDetails")
 for i in sample_data:
-    e.SubElement(doc_details, "UID").text = i["UID"]
-    e.SubElement(doc_details, "DOB").text = i["DOB"]
-    e.SubElement(doc_details, "Full_Name").text = i["Full_Name"]
-    e.SubElement(doc_details, "gender").text = i["gender"]
-    e.SubElement(doc_details, "phone_number").text = i["phone_number"]
+    et.SubElement(doc_details, "UID").text = i["UID"]
+    et.SubElement(doc_details, "DOB").text = i["DOB"]
+    et.SubElement(doc_details, "Full_Name").text = i["Full_Name"]
+    et.SubElement(doc_details, "gender").text = i["gender"]
+    et.SubElement(doc_details, "phone_number").text = i["phone_number"]
 
-e.SubElement(root, "email").text = person[0]["email"]
-xml = e.ElementTree(root)
-xml.write("TEST.xml")
-print(xml)
+et.SubElement(root, "email").text = person[0]["email"]
+xml = et.ElementTree(root)
+et.dump(xml)
+xml.write("json_to_xml.xml")

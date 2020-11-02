@@ -1,0 +1,23 @@
+<?xml version="1.0"encoding="UTF-8"standalone="yes"?>
+<PullURIRequest xmlns="http://tempuri.org/" ver="1.0" ts="YYYY-MM-DDThh:mm:ss+/-nn:nn" txn="1234" orgId="" format="xml/pdf/both">
+    <DocDetails>
+        <DocType>
+
+        </DocType> //Document type
+        <DigiLockerId>
+
+        </DigiLockerId>//Unique 36 character DigiLocker Id
+        <!-- <UID>
+
+        </UID>//Aadhaar number (Optional)
+        <FullName> 
+
+        </FullName>//Name as on Aadhaar (Optional)
+        <DOB>
+
+        </DOB>//Date of birth as on Aadhaar (Optional)
+        <Photo>
+
+        </Photo>//Base 64 encoded JPEG photograph as on Aadhaar (Optional) -->
+    </DocDetails> 
+</PullURIRequest> 

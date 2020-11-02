@@ -1,0 +1,10 @@
+<PullURIRequest ver="1.0" txn="1a2b3cd4">
+    <DocDetails>
+        <UID>1234 5678 9123</UID>
+        <DOB>01/01/2001</DOB>
+        <Full_Name>Jeevan HM</Full_Name>
+        <gender>male</gender>
+        <phone_number>1234567890</phone_number>
+    </DocDetails>
+    <email>test@gmail.com</email>
+</PullURIRequest>
