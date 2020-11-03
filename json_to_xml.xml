@@ -1,10 +1,1 @@
-<PullURIRequest ver="1.0" txn="1a2b3cd4">
-    <DocDetails>
-        <UID>1234 5678 9123</UID>
-        <DOB>01/01/2001</DOB>
-        <Full_Name>Jeevan HM</Full_Name>
-        <gender>male</gender>
-        <phone_number>1234567890</phone_number>
-    </DocDetails>
-    <email>test@gmail.com</email>
-</PullURIRequest>
+<PullURIRequest xmlns="http://tempuri.org/" ver="1.0" ts="2019-01-30 13:54:46+00:00" txn="1234" orgId="" format="xml/pdf/both"><DocDetails><DocType>OATDA</DocType><DigiLockerId>1234567899876543210</DigiLockerId><UID>1234567890</UID><name>Test</name><DOB>2000-01-01</DOB><mobile>9876543210</mobile><gender>male</gender></DocDetails></PullURIRequest>

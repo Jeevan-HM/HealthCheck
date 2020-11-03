@@ -3,37 +3,20 @@ dbname = "Sample_data"
 collection = "SampleInput"
 
 data = {
-    "person1_id": {
-        "api_url": "https://register/api/format/xml",
-        "sample _data": {
-            "UID": "1234 5678 9123",
-            "DOB": "01/01/2001",
-            "Full_Name": "Jeevan HM",
+    "sample_data": {
+        "mlns": "http://tempuri.org/",
+        "ver": "1.0",
+        "ts": "YYYY-MM-DDThh:mm:ss+/-nn:nn",
+        "txn": "1234",
+        "orgId": "",
+        "doc_details": {
+            "DocType": "OATDA",
+            "DigiLockerId": "1234567899876543210",
+            "UID": "1234567890",
+            "name": "Test",
+            "DOB": "2000-01-01",
+            "mobile": "9876543210",
             "gender": "male",
-            "phone_number": "1234567890",
         },
-        "email": "test@gmail.com",
-        "txn": "1a2b3cd4",
-        "status": 1,
-    }
-}
-
-
-{
-    "_id": {
-        "$oid": "5f99be00b6e21131ce9000c3"
     },
-    "person1_id": {
-        "api_url": "https://register/api/format/xml",
-        "sample _data": {
-            "UID": "1234 5678 9123",
-            "DOB": "01/01/2001",
-            "Full_Name": "Jeevan HM",
-            "gender": "male",
-            "phone_number": "1234567890"
-        },
-        "email": "test@gmail.com",
-        "txn": "1a2b3cd4",
-        "status": 1
-    }
 }
