@@ -10,15 +10,17 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class name_matching(Resource):
-    def get(self, raw_input_name1, raw_input_name2):
-        with open("./json_to_xml.xml") as raw_xml:
-            returnxml = xmltodict.parse(raw_xml.read())
-        return jsonify(returnxml)
+# class test(Resource):
+#     def get(self):
+#         with open("./json_to_xml.xml") as raw_xml:
+#             returnxml = xmltodict.parse(raw_xml.read())
+#         return jsonify(returnxml)
+class test(Resource):
+    def post(self):
+        data = request.data
+        print(data)
 
 
-api.add_resource(
-    name_matching, "/name/<string:raw_input_name1>/<string:raw_input_name2>"
-)
+api.add_resource(test, "/test")
 if __name__ == "__main__":
-    app.run("0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)

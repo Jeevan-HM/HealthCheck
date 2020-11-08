@@ -40,14 +40,15 @@ class xml_generator(Resource):
         for key in document_details:
             et.SubElement(doc_details, key).text = document_details[key]
         xml = et.ElementTree(root)
-        xml.write("json_to_xml.xml")
-        xml = """json_to_xml.xml"""
+        # xml.write("json_to_xml.xml")
         headers = {"Content-Type": "application/xml"}
         URL = "http://0.0.0.0:5000/test"
-        response = requests.get(URL, data=xml, headers=headers)
-        json_response = response.json()
-        latency = response.elapsed
-        return jsonify({"Response": json_response})
+        # response = requests.get(URL, data=xml, headers=headers)
+        # json_response = response.json()
+        # latency = response.elapsed
+        # return jsonify({"Response": json_response})
+        xml = et.tostring(root)
+        response = requests.post(URL, data=xml, headers=headers)
 
 
 api.add_resource(xml_generator, "/")
