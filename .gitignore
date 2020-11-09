@@ -2,9 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-json_to_xml.xml
-xml_struct.xml
-task
 # C extensions
 *.so
 
@@ -130,3 +127,6 @@ dmypy.json
 .pyre/
 .vscode/
 __pycache__/main.cpython-38.pyc
+json_to_xml.xml
+xml_struct.xml
+task

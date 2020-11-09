@@ -19,7 +19,10 @@ data = cfg.data
 
 class xml_generator(Resource):
     def get(self):
-
+        global message
+        global status
+        status = False
+        message = ""
         global data
         # db.collection.insert_one(data)
         data = data.get("sample_data")
@@ -45,10 +48,31 @@ class xml_generator(Resource):
         URL = "http://0.0.0.0:5000/test"
         # response = requests.get(URL, data=xml, headers=headers)
         # json_response = response.json()
-        # latency = response.elapsed
         # return jsonify({"Response": json_response})
         xml = et.tostring(root)
         response = requests.post(URL, data=xml, headers=headers)
+        # print(response["DocType"])
+        return_response = response.json()
+        # print(return_response)
+        # for key, value in return_response.items():
+        id = return_response["DigiLockerId"]
+        print(id)
+        message = "DigiLockerId Exitsts"
+        print(message)
+        status = return_response["status"]
+        print(status)
+        json_response = {"status": status, "message": message, "id": id}
+        return json_response
+        #     id = return_response["DigiLockerId"]
+        #     stauts = return_response["status"]
+        #     message = key + "returned"
+        # print(id)
+        # print(status)
+        # print(message)
+        # return {"status": status, "ID": id, "message": message}
+
+        # latency = response.elapsed
+        # print("latency", latency)
 
 
 api.add_resource(xml_generator, "/")

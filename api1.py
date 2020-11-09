@@ -18,7 +18,23 @@ api = Api(app)
 class test(Resource):
     def post(self):
         data = request.data
-        print(data)
+        json_response = {
+            "DocType": "OATDA",
+            "DigiLockerId": "1234567899876543210",
+            "status": True,
+            "Name": "test",
+        }
+        return jsonify(json_response)
+
+    # def get(self):
+    #     data = request.data
+    #     print(data)
+    #     json_response = {
+    #         "DocType": "OATDA",
+    #         "DigiLockerId": "1234567899876543210",
+    #         "status": 200,
+    #     }
+    #     return jsonify(json_response)
 
 
 api.add_resource(test, "/test")
