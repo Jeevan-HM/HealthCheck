@@ -1,1 +1,0 @@
-<PullURIRequest xmlns="http://tempuri.org/" ver="1.0" ts="2019-01-30 13:54:46+00:00" txn="1234" orgId="" format="xml/pdf/both"><DocDetails><DocType>OATDA</DocType><DigiLockerId>1234567899876543210</DigiLockerId><UID>1234567890</UID><name>Test</name><DOB>2000-01-01</DOB><mobile>9876543210</mobile><gender>male</gender></DocDetails></PullURIRequest>
