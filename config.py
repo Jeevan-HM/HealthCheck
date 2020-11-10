@@ -1,6 +1,6 @@
 uri = "mongodb://localhost:27017"
 dbname = "Sample_data"
-collection = "SampleInput"
+collection = "collection"
 
 data = {
     "sample_data": {

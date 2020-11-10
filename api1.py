@@ -1,6 +1,7 @@
 import xmltodict
 from flask import Flask, Response, jsonify, request
 from flask_restful import Api, Resource
+import json
 
 app = Flask(__name__)
 api = Api(app)
@@ -18,6 +19,9 @@ api = Api(app)
 class test(Resource):
     def post(self):
         data = request.data
+        # data = data.decode("utf-8")
+        # print(data["ts"])
+        print(data)
         json_response = {
             "DocType": "OATDA",
             "DigiLockerId": "1234567899876543210",
