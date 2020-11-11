@@ -55,21 +55,18 @@ class xml_generator(Resource):
             et.SubElement(doc_details, key).text = document_details[key]
         xml = et.ElementTree(root)
         xml.write("json_to_xml.xml")
-        headers = API_data["api1_details"]["API1"]["application/type"]
+        xml = et.tostring(root)
+        headers = {"Content-Type": API_data["api1_details"]["API1"]["application/type"]}
+        # headers = {"Content-Type": API_data["api1_details"]["API1"]["application/type"]}
         URL = API_data["api1_details"]["API1"]["URL"]
-        print(type(headers))
-        print(type(URL))
         # response = requests.get(URL, data=xml, headers=headers)
         # json_response = response.json()
         # return jsonify({"Response": json_response})
-        xml = et.tostring(root)
-        response = requests.post(URL, data="Hello", headers=headers, timeout=5)
-        # # print(response["DocType"])
-        # return_response = response.json()
-        # # print(return_response)
-        # id = return_response["DigiLockerId"]
-        # message = "DigiLockerId Exitsts"
-        # status = return_response["status"]
+        response = requests.post(URL, data=xml, headers=headers, timeout=5)
+        return_response = response.json()
+        id = return_response["DigiLockerId"]
+        message = "DigiLockerId Exitsts"
+        status = return_response["status"]
         json_response = {"status": status, "message": message, "id": id}
         return jsonify(json_response)
 
