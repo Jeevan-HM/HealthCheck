@@ -1,4 +1,5 @@
 import config as cfg
+import api_config as acfg
 import xml.etree.ElementTree as et
 import lxml.etree as etree
 import requests
@@ -17,6 +18,11 @@ db_name = cfg.dbname
 db = client[db_name]
 data = cfg.data
 
+API_client = MongoClient(acfg.uri)
+API_db_name = acfg.dbname
+API_db = API_client[API_db_name]
+API_data = acfg.data
+
 
 class xml_generator(Resource):
     def get(self):
@@ -25,6 +31,7 @@ class xml_generator(Resource):
         status = False
         message = ""
         global data
+        # API_db.collection.insert_one(API_data)
         # db.collection.insert_one(data)
         data = list(db.collection.find())
         for language in data:
@@ -48,29 +55,23 @@ class xml_generator(Resource):
             et.SubElement(doc_details, key).text = document_details[key]
         xml = et.ElementTree(root)
         xml.write("json_to_xml.xml")
-        headers = {"Content-Type": "application/xml"}
-        URL = "http://0.0.0.0:5000/test"
+        headers = API_data["api1_details"]["API1"]["application/type"]
+        URL = API_data["api1_details"]["API1"]["URL"]
+        print(type(headers))
+        print(type(URL))
         # response = requests.get(URL, data=xml, headers=headers)
         # json_response = response.json()
         # return jsonify({"Response": json_response})
         xml = et.tostring(root)
-        response = requests.post(URL, data=xml, headers=headers, timeout=5)
-        # print(response["DocType"])
-        return_response = response.json()
-        # print(return_response)
-        # for key, value in return_response.items():
-        id = return_response["DigiLockerId"]
-        message = "DigiLockerId Exitsts"
-        status = return_response["status"]
+        response = requests.post(URL, data="Hello", headers=headers, timeout=5)
+        # # print(response["DocType"])
+        # return_response = response.json()
+        # # print(return_response)
+        # id = return_response["DigiLockerId"]
+        # message = "DigiLockerId Exitsts"
+        # status = return_response["status"]
         json_response = {"status": status, "message": message, "id": id}
-        return json_response
-        #     id = return_response["DigiLockerId"]
-        #     stauts = return_response["status"]
-        #     message = key + "returned"
-        # print(id)
-        # print(status)
-        # print(message)
-        # return {"status": status, "ID": id, "message": message}
+        return jsonify(json_response)
 
         # latency = response.elapsed
         # print("latency", latency)
